@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\AllAnswersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,4 @@ Route::delete('/letters/{id}',[LetterController::class,'destroy']);
 Route::put('/letters/{id}',[LetterController::class, 'approve']);
 // AnswerOnLetter
 Route::post('/answer',AnswerController::class);
+Route::get('/answers',AllAnswersController::class);

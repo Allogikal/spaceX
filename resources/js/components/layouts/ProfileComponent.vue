@@ -11,7 +11,8 @@
     export default {
         data(){
             return{
-                user: {}
+                user: {},
+                answers: {}
             }
         },
         mounted() {
@@ -19,8 +20,21 @@
                 this.user = reponse.data;
                 console.log(this.user);
             });
+            api.get('http://127.0.0.1:8000/api/answers').then(reponse => {
+                this.answers = reponse.data.data;
+                Object.values(this.answers).forEach(answer => {
+                    if (answer.email === this.user.email)
+                        this.setModal(answer.content, 'auth');
+
+                })
+            });
         },
         methods:{
+            setModal(text, classes){
+                this.$store.state.modalShow = true;
+                this.$store.state.modalMessage = text;
+                this.$store.state.modalClass = classes;
+            },
             logout(){
                 api.post('http://127.0.0.1:8000/api/logout').then(response =>{
                         localStorage.clear();

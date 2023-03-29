@@ -32,12 +32,12 @@ import api from '../api';
         data(){
             return{
                 email: '',
-                text: ''
+                text: '',
             }
         },
         methods:{
             sendLetter(){
-                if(this.email == '' || this.text == ''){
+                if(this.email === '' || this.text === ''){
                     this.setModal("Пустые данные", "danger");
                 } else {
                     if(this.email.indexOf('@') > -1){
@@ -47,7 +47,7 @@ import api from '../api';
                             'isAdmit' : false,
                         }).then(response => {
                             if(response.errors){
-                                setModal("Неверно введены данные", 'danger');
+                                this.setModal("Неверно введены данные", 'danger');
                             } else {
                                 this.email = ''
                                 this.text = ''

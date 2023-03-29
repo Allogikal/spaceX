@@ -74,7 +74,6 @@ import api from '../../api';
 
                         this.$store.state.isLetters = false;
                     }
-                    console.log(this.letters);
                 });
             },
             approveLetter(id){
@@ -85,7 +84,7 @@ import api from '../../api';
                 api.post('http://127.0.0.1:8000/api/answer',{
                     'email': this.letters[this.index].email,
                     'content': 'Ответ из космоса: ' + Math.random().toString(36).substring(2, 10)
-                }).then(response =>{
+                }).then(response => {
                     console.log(response.data.msg)
                 });
             },

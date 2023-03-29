@@ -11,6 +11,7 @@ export default createStore({
             modalMessage: '',
             modalClass: '',
             isLetters: false,
+            isUsers: false
         }
     },
     mutations:{

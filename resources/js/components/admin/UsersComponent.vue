@@ -3,12 +3,15 @@
         <div class="admin-users-header">
             <h2>users</h2>
         </div>
-        <div class="admin-users-main">
+        <div class="user-none" v-show="!this.$store.state.isUsers">
+            Users none
+        </div>
+        <div v-show="this.$store.state.isUsers" class="admin-users-main">
             <div class="user-block" v-for="user in users">
                 <div class="user-block-name">
                     <p> {{ user.email }} </p>
                 </div>
-                <button>DELETE</button>
+                <button @click.prevent="deleteUser(user.id)">DELETE</button>
             </div>
         </div>
     </div>
@@ -26,10 +29,20 @@ import api from '../../api';
             this.loadUsers();
         },
         methods:{
+            deleteUser(id){
+                api.delete('http://127.0.0.1:8000/api/users/' + id).then(response => {
+                    this.loadUsers();
+                })
+                this.$router.push('/dashboard')
+                location.reload()
+            },
             loadUsers(){
                 api.get('http://127.0.0.1:8000/api/users').then(users => {
                     users.data.data.forEach(user => {
                         this.users.push(user);
+                        if (this.users) {
+                            this.$store.state.isUsers = true
+                        }
                     });
                 });
             }
@@ -41,6 +54,7 @@ import api from '../../api';
     .admin-users-header{
         width: 100%;
         height: 25%;
+        padding: 30px 0 0 20px
     }
     .admin-users-header h2{
         text-transform: uppercase;
@@ -74,6 +88,11 @@ import api from '../../api';
         font-family: sans-serif;
         text-transform: uppercase;
         letter-spacing: 0.15vw;
+    }
+    .user-none {
+        font-size: 3rem;
+        font-family: "Jost", sans-serif;
+        margin: 2vw 0 0 5vw;
     }
     .user-block button{
         width: 95%;
