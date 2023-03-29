@@ -36,12 +36,5 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('user'),
             'email_verified_at' => Carbon::now()
         ]);
-
-        User::factory()->create([
-            'email' => 'user3@mail.ru',
-            'role' => 'user',
-            'password' => Hash::make('user'),
-            'email_verified_at' => Carbon::now()
-        ]);
     }
 }
