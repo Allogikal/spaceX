@@ -4,6 +4,9 @@
             <h2>Letters</h2>
         </div>
         <div class="admin-users-main">
+            <div v-show="!this.$store.state.isLetters">
+                Letters none
+            </div>
             <div v-show="this.$store.state.isLetters">
                 <img :src="'./images/icons/Left-white.svg'"
                 class="left"
@@ -33,13 +36,11 @@
                     </div>
                 </div>
             </div>
-            <div v-show="!this.$store.state.isLetters">
-                Letters none
-            </div>
         </div>
     </div>
 </template>
 <script>
+
 import api from '../../api';
     export default {
         data(){
@@ -55,18 +56,18 @@ import api from '../../api';
                 ]
             }
         },
-        mounted(){
+        mounted() {
             this.getLetters();
         },
-        computed:{
+        computed: {
             showMes: function () {
                 return this.isLetters;
-            }
+            },
         },
         methods:{
             getLetters(){
                 api.get('http://127.0.0.1:8000/api/letters').then(response => {
-                    if(response.data.data.lenght != 0){
+                    if(response.data.data.lenght !== 0){
                         this.letters = response.data.data;
                         this.$store.state.isLetters = true;
                     } else {
@@ -78,8 +79,14 @@ import api from '../../api';
             },
             approveLetter(id){
                 api.put('http://127.0.0.1:8000/api/letters/' + id).then(response => {
-                    this.setModal(response.data.msg, 'auth');
-                    this.getLetters();
+                    this.setModal(response.data.msg, 'auth')
+                    this.getLetters()
+                });
+                api.post('http://127.0.0.1:8000/api/answer',{
+                    'email': this.letters[this.index].email,
+                    'content': 'Ответ из космоса: ' + Math.random().toString(36).substring(2, 10)
+                }).then(response =>{
+                    console.log(response.data.msg)
                 });
             },
             deleteLetter(id){
@@ -91,7 +98,7 @@ import api from '../../api';
                 location.reload()
             },
             next(){
-                if(this.letters.length == this.index){
+                if(this.letters.length === this.index){
                     this.index = 0
                 } else {
                     this.index++;
