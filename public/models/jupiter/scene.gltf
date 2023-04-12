@@ -3,24 +3,24 @@
     {
       "bufferView": 2,
       "componentType": 5126,
-      "count": 3223,
+      "count": 2048,
       "max": [
-        0.999999463558197,
-        0.9999982118606567,
+        1.0,
+        1.0,
         1.0
       ],
       "min": [
-        -0.9999986290931702,
-        -0.999998927116394,
+        -1.0,
+        -1.0,
         -1.0
       ],
       "type": "VEC3"
     },
     {
       "bufferView": 2,
-      "byteOffset": 38676,
+      "byteOffset": 24576,
       "componentType": 5126,
-      "count": 3223,
+      "count": 2048,
       "max": [
         1.0,
         1.0,
@@ -36,53 +36,53 @@
     {
       "bufferView": 1,
       "componentType": 5126,
-      "count": 3223,
+      "count": 2048,
       "max": [
-        1.0,
-        1.0
+        1.398460030555725,
+        0.9890499711036682
       ],
       "min": [
-        0.0,
-        0.0
+        0.0001900000061141327,
+        0.010950000025331974
       ],
       "type": "VEC2"
     },
     {
       "bufferView": 0,
       "componentType": 5125,
-      "count": 17664,
+      "count": 11904,
       "type": "SCALAR"
     }
   ],
   "asset": {
     "extras": {
-      "author": "Akshat (https://sketchfab.com/shooter24994)",
+      "author": "Mieke Roth (https://sketchfab.com/miekeroth)",
       "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
-      "source": "https://sketchfab.com/3d-models/jupiter-d252c96ae3de48d7968b1206522ba9f5",
-      "title": "Jupiter"
+      "source": "https://sketchfab.com/3d-models/jupiter-c5275eb96af245e4a8453837ac728a62",
+      "title": "jupiter"
     },
-    "generator": "Sketchfab-12.65.0",
+    "generator": "Sketchfab-12.67.0",
     "version": "2.0"
   },
   "bufferViews": [
     {
       "buffer": 0,
-      "byteLength": 70656,
+      "byteLength": 47616,
       "name": "floatBufferViews",
       "target": 34963
     },
     {
       "buffer": 0,
-      "byteLength": 25784,
-      "byteOffset": 70656,
+      "byteLength": 16384,
+      "byteOffset": 47616,
       "byteStride": 8,
       "name": "floatBufferViews",
       "target": 34962
     },
     {
       "buffer": 0,
-      "byteLength": 77352,
-      "byteOffset": 96440,
+      "byteLength": 49152,
+      "byteOffset": 64000,
       "byteStride": 12,
       "name": "floatBufferViews",
       "target": 34962
@@ -90,7 +90,7 @@
   ],
   "buffers": [
     {
-      "byteLength": 173792,
+      "byteLength": 113152,
       "uri": "scene.bin"
     }
   ],
@@ -102,12 +102,26 @@
   ],
   "images": [
     {
-      "uri": "textures/Material.002_diffuse.jpeg"
+      "uri": "textures/jupiter_diffuse.jpeg"
+    },
+    {
+      "uri": "textures/jupiter_specularGlossiness.png"
+    },
+    {
+      "uri": "textures/jupiter_occlusion.png"
     }
   ],
   "materials": [
     {
       "doubleSided": true,
+      "emissiveFactor": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "emissiveTexture": {
+        "index": 0
+      },
       "extensions": {
         "KHR_materials_pbrSpecularGlossiness": {
           "diffuseFactor": [
@@ -119,20 +133,26 @@
           "diffuseTexture": {
             "index": 0
           },
-          "glossinessFactor": 0.19595917942265426,
+          "glossinessFactor": 1.0,
           "specularFactor": [
-            0.0,
-            0.0,
-            0.0
-          ]
+            0.020007621951219513,
+            0.020007621951219513,
+            0.020007621951219513
+          ],
+          "specularGlossinessTexture": {
+            "index": 1
+          }
         }
       },
-      "name": "Material.002"
+      "name": "jupiter",
+      "occlusionTexture": {
+        "index": 2
+      }
     }
   ],
   "meshes": [
     {
-      "name": "Sphere_Material.002_0",
+      "name": "Sphere",
       "primitives": [
         {
           "attributes": {
@@ -174,61 +194,47 @@
     },
     {
       "children": [
-        2
+        2,
+        4
       ],
-      "matrix": [
-        1.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        1.0,
-        0.0,
-        0.0,
-        -1.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        1.0
-      ],
-      "name": "3e95d3c536c24a0cb79bffc4af21feca.fbx"
+      "name": "Root"
     },
     {
       "children": [
         3
       ],
-      "name": "RootNode"
+      "matrix": [
+        -0.29086000000000006,
+        0.9551700000000001,
+        -0.05519000000000001,
+        0.0,
+        -0.7711,
+        -0.19988000000000003,
+        0.6045200000000001,
+        0.0,
+        0.5663900000000001,
+        0.21839000000000003,
+        0.7946700000000001,
+        0.0,
+        4.076250000000001,
+        1.00545,
+        5.903860000000001,
+        1.0
+      ],
+      "name": "Lamp"
+    },
+    {
+      "name": "Lamp"
     },
     {
       "children": [
-        4
-      ],
-      "matrix": [
-        100.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        -1.629206793918314e-05,
-        -99.99999999999868,
-        0.0,
-        0.0,
-        99.99999999999868,
-        -1.629206793918314e-05,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        1.0
+        5
       ],
       "name": "Sphere"
     },
     {
       "mesh": 0,
-      "name": "Sphere_Material.002_0"
+      "name": "Sphere"
     }
   ],
   "samplers": [
@@ -252,6 +258,14 @@
     {
       "sampler": 0,
       "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
     }
   ]
 }
